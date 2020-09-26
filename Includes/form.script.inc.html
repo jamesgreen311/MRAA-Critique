@@ -1,0 +1,104 @@
+<script>
+  // global
+  var uploadsLeft = parseInt(document.getElementById("limit").innerText);
+
+  var link = "https://script.google.com/macros/s/AKfycbwWJ5ZQZYvpgO1K4yBA8haaRgtd40-8-3ZfOu20OM6x/dev";
+
+  document.getElementById("btnSave").addEventListener("click", serializeAndSave);
+  document.getElementById("frmMain").addEventListener("submit", stopSubmit);
+
+  function serializeAndSave() {
+    let d = new Date();
+    let f = document.getElementById('imageFile');
+    const file = f.files[0];
+    const fr = new FileReader();
+    let ln = document.getElementById('lastName');
+    let fn = document.getElementById('firstName');
+    let e = document.getElementById('emailAddress');
+    let ph = document.getElementById('phoneNumber');
+    let t = document.getElementById('titleOfWork');
+    let w = document.getElementById('sizeWidth');
+    let h = document.getElementById('sizeHeight');
+    let p = document.getElementById('price');
+    let m = document.getElementById('medium');
+    let fileNameFormatted = `${ln.value}-${fn.value}-${t.value}-${m.value}-${w.value}x${h.value}-${p.value}`;
+    let data = [fn.value, ln.value, e.value, ph.value, t.value, w.value, h.value, m.value, p.value, fileNameFormatted];
+
+    if (allFieldsValid()){
+      document.getElementById('messageAlert').style.display = "none";
+      document.getElementById("loading").style.display = "block";
+      fr.onload = function (e) {
+        const obj = {
+          filename: fileNameFormatted,
+          mimeType: file.type,
+          bytes: [...new Int8Array(e.target.result)]
+        };
+        google.script.run.withSuccessHandler(saveFormSuccess).saveFile(obj, data);
+      };
+      fr.readAsArrayBuffer(file);
+    } else {
+      return false;
+    }
+
+  }
+
+  function saveFormSuccess(e) {
+    let title = document.getElementById('titleOfWork').value;
+    let footerMessage = `You can submit ${--uploadsLeft} more works for this exhibition.`;
+    let messageContent = `Your submission: [${title}] has been saved. Would you like to submit another work?`;
+    let container = document.getElementById("thumbnail-container");
+
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("messageContent").innerHTML = messageContent;
+    document.getElementById("messageFooter").innerHTML = footerMessage;
+    document.getElementById('titleOfWork').value = "";
+    document.getElementById('sizeWidth').value = "";
+    document.getElementById('sizeHeight').value = "";
+    document.getElementById('medium').value = "";
+    document.getElementById('price').value = "";
+    document.getElementById('imageFile').value = "";
+    document.getElementById('messageAlert').style.display = "block";
+    document.getElementById('thumbnail').src = "";
+    container.style.display = "none";
+  }
+
+  function showDone() {
+    google.script.run.showDone();
+  }
+
+  function showThumbnail(e) {
+    console.log(e.target.files);
+    let thumbnail = document.getElementById("thumbnail");
+    let container = document.getElementById("thumbnail-container");
+    thumbnail.src = URL.createObjectURL(e.target.files[0]);
+    container.style.display = "block";
+  }
+
+  function stopSubmit(e) {
+    e.preventDefault();
+    return false;
+  }
+
+  function allFieldsValid() {
+    let inputs = document.querySelectorAll('input');
+    let invalidCount = 0;
+
+    inputs.forEach(function(input){
+      if (!input.validity.valid ) {
+        invalidCount++;
+      }
+    })
+    return invalidCount==0;
+  }
+</script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+  integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+</script>
