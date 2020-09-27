@@ -11,7 +11,7 @@ Route.path = function(r, callback) {
 
 
 function doGet(e) {
-    Route.path("done", showDone);
+    Route.path("Pages/done", showDone);
   
     var r;
     if (Route[e.parameter.v]) {
@@ -26,9 +26,13 @@ function doGet(e) {
   
 function saveToSheet(data) {
     let ss = SpreadsheetApp.getActiveSpreadsheet();
-    let ws = ss.getSheetByName(exhibitSheetName);
+    let ws = ss.getSheetByName(targetSheet);
 
     ws.appendRow(data);
     Logger.log(data);
     return true;
+}
+
+function showDone() {
+  return render(`${pageRoot}/Done`);
 }

@@ -1,2 +1,2 @@
 const ownerName = "James Green";
-const imageUploadLimit = 3;
+const imageUploadLimit = 2;

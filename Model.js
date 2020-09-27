@@ -1,6 +1,6 @@
 Config = {
   startTime: "a2",
-  duration: "b2",
+  endTime: "b2",
   deadline: "c2",
   seatLimit: "d2",
   hostName: "e2",
@@ -15,14 +15,6 @@ function getAttendeeLimit() {
   
 function getHostName() {
   return config.getRange(Config.hostName).getValue();
-}
-
-/* 
-
-@Return: hours
-*/
-function getDuration() {
-  return config.getRange(Config.duration).getValue();
 }
 
 function getDeadline() {
@@ -75,13 +67,9 @@ function getStart(option) {
 }
   
 function getEndTime() {
-  let dur = getDuration()*60*60*1000; // convert to milliseconds
-  let startDateTime = new Date(getStart()); 
-  let endDateTime = new Date(startDateTime.getTime() + dur);
+  let endDatetime = config.getRange(Config.endTime).getValue();
 
-  //Logger.log(`getEndTime(): Duration ${dur} ms, StartDateTime ${startDateTime} ms, EndDate ${endDateTime}`);
-
-  return Utilities.formatDate(endDateTime, "GMT-4", "hh:mm a");
+  return Utilities.formatDate(endDatetime, "GMT-4", "hh:mm a");
 }
 
 function getRangeByName(n) {
