@@ -7,11 +7,11 @@ function testGetHostName() {
 }
 
 function testGetDuration() {
-    Logger.log(getDeadline());
+    Logger.log(getDuration());
 }
 
 function testGetHostEmail() {
-    Logger.log(getHostEmail);
+    Logger.log(getHostEmail());
 }
 
 function testGetCoordinator() {
@@ -19,7 +19,7 @@ function testGetCoordinator() {
 }
 
 function testGetCoordinatorEmail() {
-    Logger.log(getCoordinatorEmail);
+    Logger.log(getCoordinatorEmail());
 }
 
 function testGetDeadline() {
@@ -36,6 +36,10 @@ function testGetStartMonth() {
 
 function testGetStartTime() {
     Logger.log(getStart("time"));
+}
+
+function testGetStartDateTime() {
+    Logger.log(getStart());
 }
 
 function testGetEndtime() {

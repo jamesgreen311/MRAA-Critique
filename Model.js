@@ -17,6 +17,10 @@ function getHostName() {
   return config.getRange(Config.hostName).getValue();
 }
 
+/* 
+
+@Return: hours
+*/
 function getDuration() {
   return config.getRange(Config.duration).getValue();
 }
@@ -60,6 +64,11 @@ function getStart(option) {
       r = Utilities.formatDate(startDatetime, "GMT-4", "MMMM");
       break;
     }
+
+    default: {
+      r = Utilities.formatDate(startDatetime, "GMT-4", "MM/dd/yyyy hh:mm a");
+      break;
+    }
   }
 
   return r;
@@ -67,10 +76,12 @@ function getStart(option) {
   
 function getEndTime() {
   let dur = getDuration()*60*60*1000; // convert to milliseconds
-  let startDate = Date.parse(getStart("date"));
-  let endDateTime = startDate + dur;
+  let startDateTime = new Date(getStart()); 
+  let endDateTime = new Date(startDateTime.getTime() + dur);
 
-  return Utilities.formatDate(Date.parse(endDateTime), "GMT-4", "hh:mm a");
+  //Logger.log(`getEndTime(): Duration ${dur} ms, StartDateTime ${startDateTime} ms, EndDate ${endDateTime}`);
+
+  return Utilities.formatDate(endDateTime, "GMT-4", "hh:mm a");
 }
 
 function getRangeByName(n) {
