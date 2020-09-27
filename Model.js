@@ -57,6 +57,11 @@ function getStart(option) {
       break;
     }
 
+    case "monthyear": {
+      r = Utilities.formatDate(startDatetime, "GMT-4", "MMMM yyyy");
+      break;
+    }
+
     default: {
       r = Utilities.formatDate(startDatetime, "GMT-4", "MM/dd/yyyy hh:mm a");
       break;
