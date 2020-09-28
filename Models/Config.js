@@ -1,16 +1,28 @@
+/*
+Target Config Sheet retrieved as config in privateSettings.js
+*/
+
 Config = {
   startTime: "a2",
   endTime: "b2",
   deadline: "c2",
   seatLimit: "d2",
-  hostName: "e2",
-  hostEmail: "f2",
-  coordinator: "g2",
-  coordinatorEmail: "h2"
+  totalSeatLimit: "e2",
+  hostName: "f2",
+  hostEmail: "g2",
+  coordinator: "h2",
+  coordinatorEmail: "i2"
 }
 
+/* 
+
+*/
 function getAttendeeLimit() {
   return config.getRange(Config.seatLimit).getValue();
+}
+
+function getTotalSeatLimit() {
+  return config.getRange(Config.totalSeatLimit).getValue();
 }
   
 function getHostName() {
@@ -77,14 +89,3 @@ function getEndTime() {
   return Utilities.formatDate(endDatetime, "GMT-4", "hh:mm a");
 }
 
-function getRangeByName(n) {
-  var a = wsData.getNamedRanges();
-  var rc = "";
-  for (var i in a) {
-    if (a[i].getName() == n) {
-      rc = a[i];
-    }
-  }
-  
-  return rc;
-}

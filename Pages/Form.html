@@ -33,6 +33,7 @@
         </div>
         <div class="col-12">
           <p>Active Participant Seats Available: <?= getAttendeeLimit() ?></p>
+          <p>Observer Seats Available: </p>
         </div>
       </div>
     </div>
@@ -40,12 +41,12 @@
       <div class="form-group">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text">First Name</span>
+            <span class="input-group-text">First Name *</span>
           </div>
           <input type="text" class="form-control" id="firstName" aria-label="First Name" required />
           <div class="invalid-feedback">First name is required</div>
           <div class="input-group-prepend ml-3">
-            <span class="input-group-text">Last Name</span>
+            <span class="input-group-text">Last Name *</span>
           </div>
           <input type="text" class="form-control" id="lastName" aria-label="Last Name" required />
           <div class="invalid-feedback">Last name is required</div>
@@ -54,7 +55,7 @@
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="emailAddress">Email</span>
+          <span class="input-group-text" id="emailAddress">Email *</span>
         </div>
         <input type="email" class="form-control" placeholder="Enter a valid email address" aria-label="Email Address"
           aria-describedby="Email" required>
@@ -65,13 +66,15 @@
           <p>A few days prior to the meeting, you will recieve an email with a link to the Zoom meeting. </p>
         </div>
       </div>
-      <div class="row mraa-callout mraa-callout-info">
+      <div class="row">
         <div class="col-6">
-          <p>We welcome all MRAA members to share their work but if you don't feel
-            ready and would like to see what happens in a critique please join as an Observer.</p>
+          <div class="mraa-callout mraa-callout-info">
+            <p>We welcome all MRAA members to share their work but if you don't feel
+              ready and would like to see what happens in a critique please join as an Observer.</p>
+          </div>
         </div>
         <div class="col-6">
-          <label>Attendee Level *</label>
+          <label><strong>Attendee Level *</strong></label>
           <div class="form-check">
             <input class="form-check-input" type="radio" name="attendeeLevel" id="attendeeLevel1" value="active">
             <label class="form-check-label" for="attendeeLevel">
@@ -86,17 +89,19 @@
           </div>
         </div>
       </div>
-      <hr />
-      <div class="row mraa-callout mraa-callout-info">
+      <div class="row">
         <div class="col-6">
-          <h5>Screen Sharing</h5>
-          <p>In past meetings, the work to be critiqued has been photographed and those photos are presented to the
-            group.
-            The Zoom application provides an option to share your computer screen that enables you to show your images.
-          </p>
+          <div class="mraa-callout mraa-callout-info">
+            <h5>Screen Sharing</h5>
+            <p>In past meetings, the work to be critiqued has been photographed and those photos are presented to the
+              group.
+              The Zoom application provides an option to share your computer screen that enables you to show your
+              images.
+            </p>
+          </div>
         </div>
         <div class="col-6">
-          <label>Assistance Needed</label>
+          <label><strong>Assistance Needed</strong></label>
           <div class="form-check">
             <input class="form-check-input" type="radio" name="assistance" id="assistanceYes" value="yes">
             <label class="form-check-label" for="assistance">
@@ -104,7 +109,7 @@
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="assistance" id="assistanceNo" value="no">
+            <input class="form-check-input" type="radio" name="assistance" id="assistanceNo" value="no" checked>
             <label class="form-check-label" for="assistance">
               No
             </label>
@@ -162,7 +167,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row mb-3">
         <div class="col-12">
           <!-- Buttons -->
           <hr>
