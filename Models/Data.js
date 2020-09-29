@@ -1,3 +1,10 @@
+const testSheet = "Dev-Test";
+const liveSheet = `${getStart("monthyear")}`; // Month Year
+
+let targetSheet = publishMode==="test"?testSheet:liveSheet;
+
+dataSheet = ds.getSheetByName(targetSheet);
+
 /*
 Target Data SpreadSheet retrieved as ds in privateSettings.js
 */
@@ -16,6 +23,10 @@ Data = {
     height: "k2",
     medium: "l2",
     timestamp: "m2"
+}
+
+function getDataSheet() {
+    return dataSheet;
 }
 
 /* 

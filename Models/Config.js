@@ -1,3 +1,5 @@
+const config = ds.getSheetByName("Config");
+
 /*
 Target Config Sheet retrieved as config in privateSettings.js
 */

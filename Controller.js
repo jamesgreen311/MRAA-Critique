@@ -11,7 +11,7 @@ Route.path = function(r, callback) {
 
 
 function doGet(e) {
-    Route.path("Pages/done", showDone);
+    Route.path("done", showDone);
   
     var r;
     if (Route[e.parameter.v]) {
@@ -23,12 +23,24 @@ function doGet(e) {
   
     return r;
 }
+ 
+function saveFile(f,d) {
+  let blob = Utilities.newBlob(f.bytes, f.mimeType, f.filename);
+  let uploadFolder = DriveApp.getFolderById(imageFolderId)
+  let today = new Date();
+  let uploadFolder = `Images ${getStart("monthyear")}`;
+  let newFile = DriveApp.createFile(blob).moveTo(uploadFolder).getId();
+  d.push(newFile);
+  d.push(today.toString());
   
-function saveToSheet(data) {
-    let ss = SpreadsheetApp.getActiveSpreadsheet();
-    let ws = ss.getSheetByName(targetSheet);
+  let done = saveToSheet(d);
+  Logger.log("Uploaded image id = %s",newFile)
+  return done;
+}
 
-    ws.appendRow(data);
+function saveToSheet(data) {
+    let d = getDataSheet();
+    d.appendRow(data);
     Logger.log(data);
     return true;
 }

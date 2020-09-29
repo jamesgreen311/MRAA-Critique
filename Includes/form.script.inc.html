@@ -1,11 +1,16 @@
 <script>
   // global
-  var uploadsLeft = parseInt(document.getElementById("limit").innerText);
+  var uploadsLeft = parseInt(document.getElementById('limit').innerText);
 
-  var link = "https://script.google.com/macros/s/AKfycbwWJ5ZQZYvpgO1K4yBA8haaRgtd40-8-3ZfOu20OM6x/dev";
+  var link = "https://script.google.com/macros/s/AKfycbwWJ5ZQZYvpgO1K4yBA8haaRgtd40-8-3ZfOu20OM6x/dev"; // is this still needed?
 
-  document.getElementById("btnSave").addEventListener("click", serializeAndSave);
-  document.getElementById("frmMain").addEventListener("submit", stopSubmit);
+  document.getElementById('btnSave').addEventListener("click", serializeAndSave);
+  document.getElementById('frmMain').addEventListener("submit", stopSubmit);
+  document.getElementById('imageFile').addEventListener("onchange", toggleFileRequired);
+
+  function toggleFileRequired() {
+
+  }
 
   function serializeAndSave() {
     let d = new Date();
@@ -14,28 +19,38 @@
     const fr = new FileReader();
     let ln = document.getElementById('lastName');
     let fn = document.getElementById('firstName');
-    let e = document.getElementById('emailAddress');
-    let ph = document.getElementById('phoneNumber');
+    let e = document.getElementById('email');
     let t = document.getElementById('titleOfWork');
     let w = document.getElementById('sizeWidth');
     let h = document.getElementById('sizeHeight');
-    let p = document.getElementById('price');
     let m = document.getElementById('medium');
-    let fileNameFormatted = `${ln.value}-${fn.value}-${t.value}-${m.value}-${w.value}x${h.value}-${p.value}`;
-    let data = [fn.value, ln.value, e.value, ph.value, t.value, w.value, h.value, m.value, p.value, fileNameFormatted];
+    let level = document.querySelector('input[name="attendeeLevel"]:checked');
+    let assist = document.querySelector('input[name="assistance"]:checked');
+    let q = document.getElementById('question');
+    let fileNameFormatted = "";
+    let data = [fn.value, ln.value, e.value, level.value, assist.value, q.value, t.value, w.value, h.value, m.value];
 
-    if (allFieldsValid()){
+
+    if (allFieldsValid()) {
       document.getElementById('messageAlert').style.display = "none";
-      document.getElementById("loading").style.display = "block";
-      fr.onload = function (e) {
-        const obj = {
-          filename: fileNameFormatted,
-          mimeType: file.type,
-          bytes: [...new Int8Array(e.target.result)]
+      document.getElementById('loading').style.display = "block";
+
+      if (f.value === "") {
+        data.push(fileNameFormatted);
+        google.script.run.withSuccessHandler(saveFormSuccess).saveToSheet(data);
+      } else {
+        fileNameFormatted = `${ln.value}-${fn.value}-${t.value}-${m.value}-${w.value}x${h.value}`;
+        data.push(fileNameFormatted);
+        fr.onload = function (e) {
+          const obj = {
+            filename: fileNameFormatted,
+            mimeType: file.type,
+            bytes: [...new Int8Array(e.target.result)]
+          };
+          google.script.run.withSuccessHandler(saveFormSuccess).saveFile(obj, data);
         };
-        google.script.run.withSuccessHandler(saveFormSuccess).saveFile(obj, data);
-      };
-      fr.readAsArrayBuffer(file);
+        fr.readAsArrayBuffer(file);
+      }
     } else {
       return false;
     }
@@ -48,14 +63,13 @@
     let messageContent = `Your submission: [${title}] has been saved. Would you like to submit another work?`;
     let container = document.getElementById("thumbnail-container");
 
-    document.getElementById("loading").style.display = "none";
-    document.getElementById("messageContent").innerHTML = messageContent;
-    document.getElementById("messageFooter").innerHTML = footerMessage;
+    document.getElementById('loading').style.display = "none";
+    document.getElementById('messageContent').innerHTML = messageContent;
+    document.getElementById('messageFooter').innerHTML = footerMessage;
     document.getElementById('titleOfWork').value = "";
     document.getElementById('sizeWidth').value = "";
     document.getElementById('sizeHeight').value = "";
     document.getElementById('medium').value = "";
-    document.getElementById('price').value = "";
     document.getElementById('imageFile').value = "";
     document.getElementById('messageAlert').style.display = "block";
     document.getElementById('thumbnail').src = "";
@@ -68,8 +82,8 @@
 
   function showThumbnail(e) {
     console.log(e.target.files);
-    let thumbnail = document.getElementById("thumbnail");
-    let container = document.getElementById("thumbnail-container");
+    let thumbnail = document.getElementById('thumbnail');
+    let container = document.getElementById('thumbnail-container');
     thumbnail.src = URL.createObjectURL(e.target.files[0]);
     container.style.display = "block";
   }
@@ -83,12 +97,12 @@
     let inputs = document.querySelectorAll('input');
     let invalidCount = 0;
 
-    inputs.forEach(function(input){
-      if (!input.validity.valid ) {
+    inputs.forEach(function (input) {
+      if (!input.validity.valid) {
         invalidCount++;
       }
     })
-    return invalidCount==0;
+    return invalidCount == 0;
   }
 </script>
 <!-- Optional JavaScript -->
