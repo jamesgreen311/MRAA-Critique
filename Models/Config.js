@@ -9,7 +9,7 @@ Config = {
   endTime: "b2",
   deadline: "c2",
   seatLimit: "d2",
-  totalSeatLimit: "e2",
+  observerLimit: "e2",
   hostName: "f2",
   hostEmail: "g2",
   coordinator: "h2",
@@ -23,8 +23,8 @@ function getAttendeeLimit() {
   return config.getRange(Config.seatLimit).getValue();
 }
 
-function getTotalSeatLimit() {
-  return config.getRange(Config.totalSeatLimit).getValue();
+function getObserverSeatLimit() {
+  return config.getRange(Config.observerLimit).getValue();
 }
   
 function getHostName() {

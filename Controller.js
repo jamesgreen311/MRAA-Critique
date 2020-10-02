@@ -11,6 +11,7 @@ Route.path = function(r, callback) {
 
 
 function doGet(e) {
+    getObserversAttending();
     Route.path("done", showDone);
   
     var r;
@@ -26,14 +27,14 @@ function doGet(e) {
  
 function saveFile(f,d) {
   let blob = Utilities.newBlob(f.bytes, f.mimeType, f.filename);
-  let uploadFolder = DriveApp.getFolderById(imageFolderId)
   let today = new Date();
-  let uploadFolder = `Images ${getStart("monthyear")}`;
+  let uploadFolder = DriveApp.getFoldersByName(`Images ${getStart("monthyear")}`).next(); // Folder must already exist
   let newFile = DriveApp.createFile(blob).moveTo(uploadFolder).getId();
   d.push(newFile);
   d.push(today.toString());
   
   let done = saveToSheet(d);
+  Logger.log(`Images ${getStart("monthyear")}`);
   Logger.log("Uploaded image id = %s",newFile)
   return done;
 }

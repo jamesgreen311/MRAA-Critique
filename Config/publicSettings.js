@@ -1,4 +1,4 @@
-const publishMode = "test";
+const publishMode = "live";
 const ownerName = "James Green";
 const imageUploadLimit = 2;
 const pageRoot = "Pages";

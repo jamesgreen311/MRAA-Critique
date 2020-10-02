@@ -31,10 +31,20 @@
           <p>Online Host: <a href="mailto: <?= getHostEmail() ?>"> <?= getHostName() ?> </a></p>
           <p>Critique Coordinator: <a href="mailto: <?= getCoordinatorEmail() ?>"> <?= getCoordinator() ?> </a></p>
         </div>
-        <div class="col-12">
-          <p>Active Participant Seats Available: <?= getAttendeeLimit() ?></p>
-          <p>Observer Seats Available: </p>
+
+      </div>
+      <div class="row">
+
+        <div class="col-4">
+          <p><!-- Active Participant Seats Available: <?= getAttendeeLimit() ?> --></p>
         </div>
+        <div class="col-4">
+          <!-- <p>Observer Seats Available: <?= getObserversAttending() ?></p> -->
+        </div>
+        <div class="col-4">
+          <!-- <p>Total Attending: <?= getTotalAttendees() ?></p> -->
+        </div>
+
       </div>
     </div>
     <form id="frmMain">
@@ -57,8 +67,8 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Email *</span>
         </div>
-        <input id="email" type="email" class="form-control" placeholder="Enter a valid email address" aria-label="Email Address"
-          aria-describedby="Email" required>
+        <input id="email" type="email" class="form-control" placeholder="Enter a valid email address"
+          aria-label="Email Address" aria-describedby="Email" required>
       </div>
       <div class="row" id="infoSection">
         <div class="col-12">
@@ -68,15 +78,10 @@
       </div>
       <div class="row">
         <div class="col-6">
-          <div class="mraa-callout mraa-callout-info">
-            <p>We welcome all MRAA members to share their work but if you don't feel
-              ready and would like to see what happens in a critique please join as an Observer.</p>
-          </div>
-        </div>
-        <div class="col-6">
           <label><strong>Attendee Level *</strong></label>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="attendeeLevel" id="attendeeLevel1" value="active" required>
+            <input class="form-check-input" type="radio" name="attendeeLevel" id="attendeeLevel1" value="active"
+              required>
             <label class="form-check-label" for="attendeeLevel">
               Active Participant (Share work)
             </label>
@@ -88,18 +93,15 @@
             </label>
           </div>
         </div>
-      </div>
-      <div class="row">
         <div class="col-6">
           <div class="mraa-callout mraa-callout-info">
-            <h5>Screen Sharing</h5>
-            <p>In past meetings, the work to be critiqued has been photographed and those photos are presented to the
-              group.
-              The Zoom application provides an option to share your computer screen that enables you to show your
-              images.
-            </p>
+            <p>We welcome all MRAA members to share their work but if you don't feel
+              ready and would like to see what happens in a critique please join as an Observer.</p>
           </div>
         </div>
+
+      </div>
+      <div class="row">
         <div class="col-6">
           <label><strong>Assistance Needed</strong></label>
           <div class="form-check">
@@ -115,6 +117,17 @@
             </label>
           </div>
         </div>
+        <div class="col-6">
+          <div class="mraa-callout mraa-callout-info">
+            <h5>Screen Sharing</h5>
+            <p>In past meetings, the work to be critiqued has been photographed and those photos are presented to the
+              group.
+              The Zoom application provides an option to share your computer screen that enables you to show your
+              images.
+            </p>
+          </div>
+        </div>
+
       </div>
       <div class="input-group">
         <div class="input-group-prepend">
@@ -128,8 +141,7 @@
             <label for="imageFile">Upload Your Art - (Limit of <span id="limit"><?= imageUploadLimit ?></span> Total)
               <br /> All fields required if you choose to upload *</label>
             <div class="form-group mb-3">
-              <input accept="image/jpeg, image/png" type="file" id="imageFile" class="form-control-file" 
-                onchange="showThumbnail(event)">
+              <input accept="image/jpeg, image/png" type="file" id="imageFile" class="form-control-file">
             </div>
           </div>
           <!-- Title -->
@@ -137,26 +149,25 @@
             <div class="input-group-prepend">
               <span class="input-group-text">Title of Work</span>
             </div>
-            <input type="text" class="form-control" id="titleOfWork" aria-label="Title of Work"  />
+            <input type="text" class="form-control" id="titleOfWork" aria-label="Title of Work" />
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text">Width (in)</span>
             </div>
-            <input type="number" class="form-control" id="sizeWidth" aria-label="Size: Width (in)" min="1" max="999"
-               />
+            <input type="number" class="form-control" id="sizeWidth" aria-label="Size: Width (in)" min="1" max="999" />
             <div class="input-group-prepend ml-3">
               <span class="input-group-text">Height (in)</span>
             </div>
-            <input type="number" class="form-control" id="sizeHeight" aria-label="Size: Height (in)" min="1" max="999"
-               />
+            <input type="number" class="form-control" id="sizeHeight" aria-label="Size: Height (in)" min="1"
+              max="999" />
           </div>
           <!-- Medium -->
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text">Medium</span>
             </div>
-            <input type="text" class="form-control" id="medium" aria-label="Medium"  />
+            <input type="text" class="form-control" id="medium" aria-label="Medium" />
           </div>
         </div>
         <div class="col-6">
