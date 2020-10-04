@@ -2,4 +2,5 @@ privateSettings.js
 Archive/*
 scratchpad.*
 .claspignore
+.clasp.json
 .DS_Store
