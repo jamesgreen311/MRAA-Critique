@@ -1,47 +1,47 @@
-function testGetLimit() {
+function testGetLimit_() {
     Logger.log(getAttendeeLimit());
 }
 
-function testGetHostName() {
+function testGetHostName_() {
     Logger.log(getHostName());
 }
 
-function testGetDuration() {
+function testGetDuration_() {
     Logger.log(getDuration());
 }
 
-function testGetHostEmail() {
+function testGetHostEmail_() {
     Logger.log(getHostEmail());
 }
 
-function testGetCoordinator() {
+function testGetCoordinator_() {
     Logger.log(getCoordinator());
 }
 
-function testGetCoordinatorEmail() {
+function testGetCoordinatorEmail_() {
     Logger.log(getCoordinatorEmail());
 }
 
-function testGetDeadline() {
+function testGetDeadline_() {
     Logger.log(getDeadline());
 }
 
-function testGetStartDate() {
+function testGetStartDate_() {
     Logger.log(getStart("date"));
 }
 
-function testGetStartMonth() {
+function testGetStartMonth_() {
     Logger.log(getStart("month"));
 }
 
-function testGetStartTime() {
+function testGetStartTime_() {
     Logger.log(getStart("time"));
 }
 
-function testGetStartDateTime() {
+function testGetStartDateTime_() {
     Logger.log(getStart());
 }
 
-function testGetEndtime() {
+function testGetEndtime_() {
     Logger.log(getEndTime());
 }

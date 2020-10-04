@@ -11,7 +11,6 @@ Route.path = function(r, callback) {
 
 
 function doGet(e) {
-    getObserversAttending();
     Route.path("done", showDone);
   
     var r;

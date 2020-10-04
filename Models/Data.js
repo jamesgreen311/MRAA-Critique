@@ -23,7 +23,10 @@ Data = {
     width: "j2",
     height: "k2",
     medium: "l2",
-    timestamp: "m2"
+    timestamp: "m2",
+    // Calculated Columns
+    activeCount: "p2",
+    observerCount: "q2"
 }
 
 function getDataSheet() {
@@ -51,25 +54,19 @@ function getTotalAttending(option) {
     }
 }
 
-function getTotalAttendees() {
-/*     let r = dataSheet.getRange(2, 1, dataSheet.getLastRow() - 1, 1).getValues();
-    let unique = new Array();
 
-    if (r.length > 0) {
-        let single = r.map(i => i[0]);
-        unique = [...new Set(single)];
-    }
-    return unique.length; */
+function getObserversCount() {
+    return dataSheet.getRange(Data.observerCount).getValue();
 }
 
-function getObserversAttending() {
-    /*     let r = dataSheet.getRange(2, 3, dataSheet.getLastRow()-1, 2).getValues();
-        //let single = r.map(i => i[0]);
-        let unique = [...new Set(r)];
-        Logger.log(unique); */
+function getActiveCount() {
+    return dataSheet.getRange(Data.activeCount).getValue();
+}
+
+function getTotalAttendees() {
+    return getObserversCount() + getActiveCount();
 }
 
 function getObserverSeatsAvailable() {
-/*     let limit = getObserverLimit(); */
-
+    return getObserverLimit() - getObserversCount();
 }

@@ -36,13 +36,13 @@
       <div class="row">
 
         <div class="col-4">
-          <p><!-- Active Participant Seats Available: <?= getAttendeeLimit() ?> --></p>
+          <h5>Active Participant Seats Available: <span class="badge badge-primary"><?= getActiveSeatLimit() - getActiveCount() ?></span></h5>
         </div>
         <div class="col-4">
-          <!-- <p>Observer Seats Available: <?= getObserversAttending() ?></p> -->
+          <h5>Observer Seats Available: <span class="badge badge-primary"><?= getObserverSeatLimit() - getObserversCount() ?></span></h5>
         </div>
         <div class="col-4">
-          <!-- <p>Total Attending: <?= getTotalAttendees() ?></p> -->
+          <h5>Total Attending: <span class="badge badge-primary"><?= getTotalAttendees() ?></span></h5>
         </div>
 
       </div>
@@ -73,11 +73,12 @@
       <div class="row" id="infoSection">
         <div class="col-12">
           <h5>This Virtual Meeting will be conducted using Zoom</h5>
-          <p>A few days prior to the meeting, you will recieve an email with a link to the Zoom meeting. </p>
+          <p>A few days prior to the meeting, you will recieve an email with a link to the Zoom meeting.
+          <br/>For Questions about Zoom, check here: <a href="https://support.zoom.us/hc/en-us/articles/206175806" target="_blank">Zoom Support</a></p>
         </div>
       </div>
       <div class="row">
-        <div class="col-6">
+        <div class="col-4">
           <label><strong>Attendee Level *</strong></label>
           <div class="form-check">
             <input class="form-check-input" type="radio" name="attendeeLevel" id="attendeeLevel1" value="active"
@@ -93,7 +94,7 @@
             </label>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-8">
           <div class="mraa-callout mraa-callout-info">
             <p>We welcome all MRAA members to share their work but if you don't feel
               ready and would like to see what happens in a critique please join as an Observer.</p>
@@ -102,7 +103,7 @@
 
       </div>
       <div class="row">
-        <div class="col-6">
+        <div class="col-4">
           <label><strong>Assistance Needed</strong></label>
           <div class="form-check">
             <input class="form-check-input" type="radio" name="assistance" id="assistanceYes" value="yes">
@@ -117,7 +118,7 @@
             </label>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-8">
           <div class="mraa-callout mraa-callout-info">
             <h5>Screen Sharing</h5>
             <p>In past meetings, the work to be critiqued has been photographed and those photos are presented to the
