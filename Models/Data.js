@@ -33,28 +33,6 @@ function getDataSheet() {
     return dataSheet;
 }
 
-/* 
-Sum the number of both active and observers attending meeting from the target Data sheet
-
-*/
-function getTotalAttending(option) {
-    switch (option) {
-        case "active": {
-
-        }
-
-        case "observer": {
-
-        }
-
-        default: {
-            // return both active and observer
-
-        }
-    }
-}
-
-
 function getObserversCount() {
     return dataSheet.getRange(Data.observerCount).getValue();
 }

@@ -41,7 +41,8 @@ function saveFile(f,d) {
 function saveToSheet(data) {
     let d = getDataSheet();
     d.appendRow(data);
-    Logger.log(data);
+    sendNotification(data);
+    //Logger.log(data);
     return true;
 }
 
