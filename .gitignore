@@ -2,3 +2,4 @@ Config/privateSettings.js
 Archive/*
 scratchpad.*
 .claspignore
+.DS_Store
