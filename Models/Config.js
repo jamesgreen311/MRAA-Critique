@@ -13,7 +13,8 @@ Config = {
   hostName: "f2",
   hostEmail: "g2",
   coordinator: "h2",
-  coordinatorEmail: "i2"
+  coordinatorEmail: "i2",
+  sessionStatus: "j2"
 }
 
 /* 
@@ -91,3 +92,6 @@ function getEndTime() {
   return Utilities.formatDate(endDatetime, "GMT-4", "hh:mm a");
 }
 
+function getSessionStatus() {
+  return config.getRange(Config.sessionStatus).getValue();  
+}

@@ -9,6 +9,7 @@
 
   function pageLoaded() {
     google.script.run.withSuccessHandler(setCopyrightYear).getCurrentYear();
+    google.script.run.withSuccessHandler(closeSession).getSessionStatus();
   }
 
   function toggleFileRequiredFields(e) {
@@ -71,7 +72,7 @@
     let f = document.getElementById('imageFile').value;
     let footerMessage = "";
     let messageContent = "";
-    let container = document.getElementById("thumbnail-container");
+    let container = document.getElementById('thumbnail-container');
 
     if (f === "") {
       messageContent = "";
@@ -124,9 +125,15 @@
   }
 
   function setCopyrightYear(yr) {
-    document.getElementById("copyrightYear").innerHTML = `Copyright &copy; ${yr}`;
+    document.getElementById('copyrightYear').innerHTML = `Copyright &copy; ${yr}`;
   }
 
+  function closeSession(state) {
+    if (state === "Closed") {
+      document.getElementById('sessionStatusMessage').innerHTML = "This month's critique is <span class='badge badge-danger'>Closed</span>";
+      document.getElementById('btnSave').disabled = true;
+    }
+  }
 </script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
