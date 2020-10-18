@@ -14,4 +14,8 @@ function sendNotification(data) {
     const body = `A new critique sign up has been detected \n ${data}`;
     MailApp.sendEmail(supportEmail, "New Critique Sign Up", body);
   }
-  
+
+  function getCurrentYear() {
+    y = new Date().getFullYear();
+    return y;
+  }

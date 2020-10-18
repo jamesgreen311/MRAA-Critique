@@ -2,11 +2,14 @@
   // global
   var uploadsLeft = parseInt(document.getElementById('limit').innerText);
 
-  var link = "https://script.google.com/macros/s/AKfycbwWJ5ZQZYvpgO1K4yBA8haaRgtd40-8-3ZfOu20OM6x/dev"; // is this still needed?
-
+  document.addEventListener("DOMContentLoaded", pageLoaded);
   document.getElementById('btnSave').addEventListener("click", serializeAndSave);
   document.getElementById('frmMain').addEventListener("submit", stopSubmit);
   document.getElementById('imageFile').addEventListener("change", showThumbnail);
+
+  function pageLoaded() {
+    google.script.run.withSuccessHandler(setCopyrightYear).getCurrentYear();
+  }
 
   function toggleFileRequiredFields(e) {
     var t = document.getElementById('titleOfWork');
@@ -119,6 +122,11 @@
     })
     return invalidCount == 0;
   }
+
+  function setCopyrightYear(yr) {
+    document.getElementById("copyrightYear").innerHTML = `Copyright &copy; ${yr}`;
+  }
+
 </script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

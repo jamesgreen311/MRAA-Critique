@@ -16,7 +16,8 @@
 </head>
 
 <body>
-  <div class="container">
+  <?!= include("Includes/html/header.inc"); ?>
+  <div class="container mraa-container pt-3">
     <h1><?= getStart('month') ?> Critique Sign Up Sheet</h1>
     <h5>* <span class="badge badge-secondary">Required</span></h5>
     <div id="aboutSection" class="mraa-callout mraa-callout-primary">
@@ -36,10 +37,12 @@
       <div class="row">
 
         <div class="col-4">
-          <h5>Active Participant Seats Available: <span class="badge badge-primary"><?= getActiveSeatLimit() - getActiveCount() ?></span></h5>
+          <h5>Active Participant Seats Available: <span
+              class="badge badge-primary"><?= getActiveSeatLimit() - getActiveCount() ?></span></h5>
         </div>
         <div class="col-4">
-          <h5>Observer Seats Available: <span class="badge badge-primary"><?= getObserverSeatLimit() - getObserversCount() ?></span></h5>
+          <h5>Observer Seats Available: <span
+              class="badge badge-primary"><?= getObserverSeatLimit() - getObserversCount() ?></span></h5>
         </div>
         <div class="col-4">
           <h5>Total Attending: <span class="badge badge-primary"><?= getTotalAttendees() ?></span></h5>
@@ -74,7 +77,8 @@
         <div class="col-12">
           <h5>This Virtual Meeting will be conducted using Zoom</h5>
           <p>A few days prior to the meeting, you will recieve an email with a link to the Zoom meeting.
-          <br/>For Questions about Zoom, check here: <a href="https://support.zoom.us/hc/en-us/articles/206175806" target="_blank">Zoom Support</a></p>
+            <br />For Questions about Zoom, check here: <a href="https://support.zoom.us/hc/en-us/articles/206175806"
+              target="_blank">Zoom Support</a></p>
         </div>
       </div>
       <div class="row">
@@ -139,8 +143,16 @@
       <div class="row">
         <div class="col-6">
           <div class="mraa-callout mraa-callout-info">
-            <label for="imageFile">Upload Your Art - (Limit of <span id="limit"><?= imageUploadLimit ?></span> Total)
-              <br /> All fields required if you choose to upload *</label>
+            <h4><strong>Select Your Images to Upload</strong></h4>
+
+            <div class="row mb-2">
+              <div class="col-6"><strong>(Limit of <span id="limit"><?= imageUploadLimit ?></span> Total)</strong></div>
+              <div class="col-6 text-right">
+                <small>All fields required *</small>
+              </div>
+            </div>
+            <!--             <label for="imageFile">Upload Your Art - (Limit of <span id="limit"><?= imageUploadLimit ?></span> Total)
+              <br /> All fields required if you choose to upload *</label> -->
             <div class="form-group mb-3">
               <input accept="image/jpeg, image/png" type="file" id="imageFile" class="form-control-file">
             </div>
@@ -184,7 +196,7 @@
           <!-- Buttons -->
           <hr>
           <div>
-            <button class="btn btn-primary mraa-button-primary" id="btnSave">Save</button>
+            <button class="btn btn-primary mraa-button-primary mr-3" id="btnSave">Send to MRAA</button>
             <a href="<?= ScriptApp.getService().getUrl(); ?>?v=done" id="btnDone" class="btn btn-secondary"
               target="_top">Done</a>
           </div>
@@ -193,7 +205,7 @@
 
     </form>
 
-    <div id="messageAlert" class="alert alert-success mt-4" role="alert" style="display: none;">
+    <div id="messageAlert" class="alert alert-success mt-4 mraa-alert" role="alert" style="display: none;">
       <h4 class="alert-heading">Save Successful</h4>
       <p id="messageContent"></p>
       <hr>
@@ -207,11 +219,13 @@
         <div class="spinner-border mt-5" role="status" style="width: 4rem; height: 4rem;">
           <span class="sr-only">Saving...</span>
         </div>
-        <div class="pt-3">Saving...</div>
+        <!-- <div class="pt-3">Saving...</div> -->
       </div>
     </div>
-  </div>
+    <div class="pt-3 text-center">Please be patient<br>as your file<br>is being uploaded...</div>
 
+  </div>
+  <?!= include("Includes/html/footer.inc"); ?>
   <?!= include("Includes/form.script.inc"); ?>
 </body>
 
