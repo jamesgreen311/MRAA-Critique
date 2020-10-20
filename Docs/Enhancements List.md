@@ -1,0 +1,1 @@
+1. When session is closed the whole form needs to be hidden.
