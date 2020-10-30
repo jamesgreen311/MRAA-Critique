@@ -26,16 +26,16 @@
             <h2 class="mraa-sub-header">Sign Up Sheet</h2>
           </div>
           <div class="col-3">
-            <h2 class="mraa-sub-header">Attending: <span id="totalAttending" class="badge badge-primary"><?= getTotalAttendees() ?></span>
+            <h2 class="mraa-sub-header">Attending <span id="totalAttending" class="badge badge-primary badge-bigger"><?= getTotalAttendees() ?></span>
             </h2>
           </div>
           <div class="col-3">
-            <h2 class="mraa-sub-header">Active Seats Available: <span id="activeAvailable"
-                class="badge badge-primary"><?= getActiveSeatLimit() - getActiveCount() ?></span></h2>
+            <h2 class="mraa-sub-header">Active Seats Available <span id="activeAvailable"
+                class="badge badge-primary badge-bigger"><?= getActiveSeatLimit() - getActiveCount() ?></span></h2>
           </div>
           <div class="col-3">
-            <h2 class="mraa-sub-header">Observer Seats Available: <span id="observerAvailable"
-                class="badge badge-primary"><?= getObserverSeatLimit() - getObserversCount() ?></span></h2>
+            <h2 class="mraa-sub-header">Observer Seats Available <span id="observerAvailable"
+                class="badge badge-primary badge-bigger"><?= getObserverSeatLimit() - getObserversCount() ?></span></h2>
           </div>
         </div>
       </div>

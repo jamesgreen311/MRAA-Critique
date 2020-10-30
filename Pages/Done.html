@@ -7,19 +7,29 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <?!= include("Includes/css/bootstrap"); ?>
+    <?!= include("Includes/css/global"); ?>
 
-    <title>Metropolitan Richmond Artists Association</title>
-    <?!= include("Includes/form.css.inc"); ?>
+    <title>MRAA Critique Sign Up</title>
 </head>
 
 <body>
-    <div class="container">
-        <h1><?= getStart('month') ?> Critique Sign Up</h1>
-        <h2>Thank you for joining this month's online critique group</h2>
+    <?!= include("Includes/html/header.inc"); ?>
+
+    <div class="content">
+        <div class="container mt-4 mb-2">
+            <header class="entry-header">
+                <h1><?= getMonth() ?> Critique Sign Up</h1>
+                <h2>Thank you for joining this month's online critique group</h2>
+            </header>
+            <hr>
+            <div class="text-center mb-4"><img
+                    src="https://metrorichmondart.org/wp-content/uploads/2020/02/mraa-logo-sm.png">
+            </div>
+        </div>
     </div>
+    <?!= include("Includes/html/footer.inc"); ?>
+    <?!= include("Includes/scripts/footer"); ?>
 </body>
 
 </html>
