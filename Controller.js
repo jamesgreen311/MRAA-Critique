@@ -33,8 +33,8 @@ function saveFile(f,d) {
   d.push(today.toString());
   
   let done = saveToSheet(d);
-  Logger.log(`Images ${getStart("monthyear")}`);
-  Logger.log("Uploaded image id = %s",newFile)
+/*   Logger.log(`Images ${getStart("monthyear")}`);
+  Logger.log("Uploaded image id = %s",newFile) */
   return done;
 }
 

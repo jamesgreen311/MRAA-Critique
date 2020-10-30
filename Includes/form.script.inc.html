@@ -1,6 +1,6 @@
 <script>
   // global
-  var uploadsLeft = parseInt(document.getElementById('limit').innerText);
+  var uploadsLeft = 0;
 
   document.addEventListener("DOMContentLoaded", pageLoaded);
   document.getElementById('btnSave').addEventListener("click", serializeAndSave);
@@ -68,11 +68,15 @@
   }
 
   function saveFormSuccess(e) {
+    google.script.run.withSuccessHandler(updateUploadCount).getUploadCountByEmail(document.getElementById('emailAddress').value);
+
     let title = document.getElementById('titleOfWork').value;
     let f = document.getElementById('imageFile').value;
     let footerMessage = "";
     let messageContent = "";
     let container = document.getElementById('thumbnail-container');
+    let outerBox = document.getElementById('thumbnail-outer-box');
+    let messageBox = document.getElementById('thumbnail-message');
 
     if (f === "") {
       messageContent = "";
@@ -92,7 +96,8 @@
     document.getElementById('messageAlert').style.display = "block";
     document.getElementById('thumbnail').src = "";
     container.style.display = "none";
-
+    messageBox.style.display = "block";
+    outerBox.classList.add("mraa-highlight");
   }
 
   function showDone() {
@@ -103,6 +108,13 @@
     toggleFileRequiredFields();
     let thumbnail = document.getElementById('thumbnail');
     let container = document.getElementById('thumbnail-container');
+    let message = document.getElementById('thumbnail-message');
+    let outerBox = document.getElementById('thumbnail-outer-box');
+
+    outerBox.classList.remove('mraa-highlight');
+    message.style.display = "none";
+
+
     thumbnail.src = URL.createObjectURL(e.target.files[0]);
     container.style.display = "block";
   }
@@ -130,7 +142,9 @@
 
   function closeSession(state) {
     if (state === "Closed") {
-      document.getElementById('sessionStatusMessage').innerHTML = "Sign up for this month's critique is now <span class='badge badge-danger'>Closed</span>";
+      let messageBox = document.getElementById('sessionStatusMessage');
+      messageBox.innerHTML = "Sign up for this month's critique is now <span class='badge badge-danger'>Closed</span>";
+      messageBox.style.display = "block";
       document.getElementById('btnSave').disabled = true;
       document.getElementById('frmMain').innerHTML = "";
     }

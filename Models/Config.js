@@ -4,94 +4,71 @@ const config = ds.getSheetByName("Config");
 Target Config Sheet retrieved as config in privateSettings.js
 */
 
-Config = {
-  startTime: "a2",
-  endTime: "b2",
-  deadline: "c2",
-  activeSeatLimit: "d2",
-  observerLimit: "e2",
-  hostName: "f2",
-  hostEmail: "g2",
-  coordinator: "h2",
-  coordinatorEmail: "i2",
-  sessionStatus: "j2"
+ConfigDataMap = {
+  month: "a2",
+  start: "b2",
+  end: "c2",
+  deadline: "d2",
+  activeSeatLimit: "e2",
+  observerLimit: "f2",
+  hostName: "g2",
+  hostEmail: "h2",
+  coordinator: "i2",
+  coordinatorEmail: "j2",
+  sessionStatus: "k2",
+  uploadLimit: "l2"
 }
 
 /* 
 
 */
 function getObserverSeatLimit() {
-  return config.getRange(Config.observerLimit).getValue();
+  return config.getRange(ConfigDataMap.observerLimit).getValue();
+}
+
+function getMonth() {
+  return config.getRange(ConfigDataMap.month).getDisplayValue();
 }
   
 function getActiveSeatLimit() {
-  return config.getRange(Config.activeSeatLimit).getValue();
+  return config.getRange(ConfigDataMap.activeSeatLimit).getValue();
 }
 
 function getHostName() {
-  return config.getRange(Config.hostName).getValue();
+  return config.getRange(ConfigDataMap.hostName).getValue();
 }
 
 function getDeadline() {
-  return Utilities.formatDate(config.getRange(Config.deadline)
-    .getValue(), "GMT-4", "MMMM dd, yyyy");
+  return config.getRange(ConfigDataMap.deadline).getDisplayValue();
 }
 
 function getHostEmail() {
-  return config.getRange(Config.hostEmail).getValue();
+  return config.getRange(ConfigDataMap.hostEmail).getValue();
 }
 
 function getCoordinator() {
-  return config.getRange(Config.coordinator).getValue();
+  return config.getRange(ConfigDataMap.coordinator).getValue();
 }
 
 function getCoordinatorEmail() {
-  return config.getRange(Config.coordinatorEmail).getValue();
+  return config.getRange(ConfigDataMap.coordinatorEmail).getValue();
 }
 
 /*
 @Param: option string [date, time, month]
 */
-function getStart(option) {
-  let startDatetime = config.getRange(Config.startTime).getValue();
-  var r;
-
-  switch (option) {
-    case "date": {
-      r = Utilities.formatDate(startDatetime, "GMT-4", "MMMM dd, yyyy");
-      break;
-    }
-
-    case "time": {
-      r = Utilities.formatDate(startDatetime, "GMT-4", "hh:mm a");
-      break;
-    }
-
-    case "month": {
-      r = Utilities.formatDate(startDatetime, "GMT-4", "MMMM");
-      break;
-    }
-
-    case "monthyear": {
-      r = Utilities.formatDate(startDatetime, "GMT-4", "MMMM yyyy");
-      break;
-    }
-
-    default: {
-      r = Utilities.formatDate(startDatetime, "GMT-4", "MM/dd/yyyy hh:mm a");
-      break;
-    }
-  }
-
-  return r;
+function getStart() {
+  return config.getRange(ConfigDataMap.start).getDisplayValue();
 }
   
-function getEndTime() {
-  let endDatetime = config.getRange(Config.endTime).getValue();
-
-  return Utilities.formatDate(endDatetime, "GMT-4", "hh:mm a");
+function getEnd() {
+  return config.getRange(ConfigDataMap.end).getDisplayValue();
 }
 
 function getSessionStatus() {
-  return config.getRange(Config.sessionStatus).getValue();  
+  return config.getRange(ConfigDataMap.sessionStatus).getValue();  
+}
+
+function getUploadLimit() {
+  return config.getRange(ConfigDataMap.uploadLimit).getValue();
 }
