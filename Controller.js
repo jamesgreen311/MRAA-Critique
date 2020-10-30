@@ -29,13 +29,10 @@ function saveFile(f,d) {
   let today = new Date();
   let uploadFolder = DriveApp.getFolderById("1vzt4WO3Rh0mbyzzVsE1MwSbkRYopKfAz"); // Folder must already exist
   let newFile = uploadFolder.createFile(blob).getId();
-  //DriveApp.createFile(blob).moveTo(uploadFolder).getId();
   d.push(newFile);
   d.push(today);
   
   let done = saveToSheet(d);
-/*   Logger.log(`Images ${getStart("monthyear")}`);
-  Logger.log("Uploaded image id = %s",newFile) */
   return done;
 }
 
@@ -43,7 +40,6 @@ function saveToSheet(data) {
     let d = getDataSheet();
     d.appendRow(data);
     sendNotification(data);
-    //Logger.log(data);
     return true;
 }
 

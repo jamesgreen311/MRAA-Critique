@@ -1,8 +1,7 @@
 const testSheet = "November 2020";
-//const liveSheet = `${getStart("monthyear")}`; // Month Year
 const liveSheet = "November 2020";
 
-let targetSheet = publishMode === "test" ? testSheet : liveSheet;
+let targetSheet = publishMode === "live" ? testSheet : liveSheet;
 
 dataSheet = ds.getSheetByName(targetSheet);
 
