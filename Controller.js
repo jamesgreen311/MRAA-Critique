@@ -27,10 +27,11 @@ function doGet(e) {
 function saveFile(f,d) {
   let blob = Utilities.newBlob(f.bytes, f.mimeType, f.filename);
   let today = new Date();
-  let uploadFolder = DriveApp.getFoldersByName(`Images ${getStart("monthyear")}`).next(); // Folder must already exist
-  let newFile = DriveApp.createFile(blob).moveTo(uploadFolder).getId();
+  let uploadFolder = DriveApp.getFolderById("1vzt4WO3Rh0mbyzzVsE1MwSbkRYopKfAz"); // Folder must already exist
+  let newFile = uploadFolder.createFile(blob).getId();
+  //DriveApp.createFile(blob).moveTo(uploadFolder).getId();
   d.push(newFile);
-  d.push(today.toString());
+  d.push(today);
   
   let done = saveToSheet(d);
 /*   Logger.log(`Images ${getStart("monthyear")}`);

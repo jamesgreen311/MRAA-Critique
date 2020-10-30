@@ -34,21 +34,33 @@ function getDataSheet() {
 }
 
 function getObserversCount() {
+    let count = 0;
     let counts = dataSheet.getRange(Data.attendeeCount+dataSheet.getLastRow()).getValues();
     let filteredCounts = counts.filter(r => r[0]=="observer");
-    return filteredCounts[0][1];
+    if (filteredCounts.length>0) {
+        count = filteredCounts[0][1];
+    }
+    return count;
 }
 
 function getActiveCount() {
+    let count = 0;
     let counts = dataSheet.getRange(Data.attendeeCount+dataSheet.getLastRow()).getValues();
     let filteredCounts = counts.filter(r => r[0]=="active");
-    return filteredCounts[0][1];
+    if (filteredCounts.length>0) {
+        count = filteredCounts[0][1];
+    }
+    return count;
 }
 
 function getTotalAttendees() {
+    let count = 0;
     let counts = dataSheet.getRange(Data.attendeeCount+dataSheet.getLastRow()).getValues();
     let filteredCounts = counts.filter(r => r[0]=="Grand Total");
-    return filteredCounts[0][1];
+    if (filteredCounts.length>0) {
+        count = filteredCounts[0][1];
+    }
+    return count;
 }
 
 function getObserverSeatsAvailable() {
@@ -56,8 +68,24 @@ function getObserverSeatsAvailable() {
 }
 
 function getUploadCountByEmail(email) {
+    let count = 0;
     let counts = dataSheet.getRange(Data.uploadCounts+dataSheet.getLastRow()).getValues();
     let filteredCounts = counts.filter(r => r[0].toLowerCase()==email.toLowerCase());
+    if (filteredCounts.length>0) {
+        count = filteredCounts[0][1];
+    }
+    return count;
+}
 
-    return filteredCounts[0][1];
+function getActiveAvailable() {
+    return getActiveSeatLimit() - getActiveCount();
+}
+
+function getObserverAvailable() {
+    return getObserverSeatLimit() - getObserversCount();
+}
+
+function isMaxUploadReached(email) {
+    let maxReached = (getUploadLimit() - getUploadCountByEmail(email)) <=0;
+    return maxReached;
 }

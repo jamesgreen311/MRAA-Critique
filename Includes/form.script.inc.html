@@ -68,7 +68,11 @@
   }
 
   function saveFormSuccess(e) {
-    google.script.run.withSuccessHandler(updateUploadCount).getUploadCountByEmail(document.getElementById('emailAddress').value);
+    google.script.run.withSuccessHandler(updateUploadCount).getUploadCountByEmail(document.getElementById('email').value);
+    google.script.run.withSuccessHandler(updateAttendingCount).getTotalAttendees();
+    google.script.run.withSuccessHandler(updateActiveAvailable).getActiveAvailable();
+    google.script.run.withSuccessHandler(updateObserverAvailable).getObserverAvailable();
+    google.script.run.withSuccessHandler(imageUploadHandler).isMaxUploadReached(document.getElementById('email').value);
 
     let title = document.getElementById('titleOfWork').value;
     let f = document.getElementById('imageFile').value;
@@ -82,8 +86,8 @@
       messageContent = "";
       footerMessage = "See you at the critique!";
     } else {
-      footerMessage = `You can submit ${--uploadsLeft} more works for this critique.`;
-      messageContent = `Your submission: [${title}] has been saved. Would you like to submit another work?`;
+      footerMessage = `You can submit  more works for this critique.`;
+      messageContent = `Your submission: [${title}] has been saved.`;
     }
     document.getElementById('loading').style.display = "none";
     document.getElementById('messageContent').innerHTML = messageContent;
@@ -149,6 +153,30 @@
       document.getElementById('frmMain').innerHTML = "";
     }
   }
+
+  function updateUploadCount(c) {
+    document.getElementById('uploadCount').innerText = c;
+  }
+
+  function updateAttendingCount(c) {
+    document.getElementById('totalAttending').innerText = c;
+  }
+
+  function updateActiveAvailable(c) {
+    document.getElementById('activeAvailable').innerText = c;
+  }
+
+  function updateObserverAvailable(c) {
+    document.getElementById('observerAvailable').innerText = c;
+  }
+
+  function imageUploadHandler(limitReached) {
+    if (limitReached) {
+      document.getElementById('messageFooter').innerText = "You have uploaded the limit for this session."
+      document.getElementById('btnSave').disabled = true;
+    }
+  }
+
 </script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
