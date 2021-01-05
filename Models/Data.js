@@ -1,5 +1,6 @@
-const testSheet = "November 2020";
-const liveSheet = "November 2020";
+// TODO - Remove hardcoded month and year. Follow Event Manager model
+const testSheet = "January 2021";
+const liveSheet = "January 2021";
 
 let targetSheet = publishMode === "live" ? testSheet : liveSheet;
 
