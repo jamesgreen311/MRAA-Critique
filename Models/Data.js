@@ -1,6 +1,9 @@
 // TODO - Remove hardcoded month and year. Follow Event Manager model
-const testSheet = "January 2021";
-const liveSheet = "January 2021";
+const d = new Date();
+const m = getMonth();
+const y = d.getFullYear();
+const testSheet = "Test";
+const liveSheet = `${m} ${y}`;
 
 let targetSheet = publishMode === "live" ? testSheet : liveSheet;
 
