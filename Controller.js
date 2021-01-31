@@ -39,7 +39,19 @@ function saveFile(f,d) {
 function saveToSheet(data) {
     let d = getDataSheet();
     d.appendRow(data);
-    sendNotification(data);
+
+    let eventInfo = {
+      zoomLink: getZoomLink(),
+      zoomMeetingId: getZoomMeetingID(),
+      zoomPasscode: getZoomPasscode(),
+      sendTo: data[2],
+      //sendTo: "jamesgreen.311@gmail.com" // testing only
+    }
+
+    if (getRecordCountByEmail(data[2]) < 2) {
+      sendNotification(eventInfo);
+    }
+
     return true;
 }
 

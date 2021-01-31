@@ -16,7 +16,10 @@ ConfigDataMap = {
   coordinator: "i2",
   coordinatorEmail: "j2",
   sessionStatus: "k2",
-  uploadLimit: "l2"
+  uploadLimit: "l2",
+  zoomLink: "m2",
+  zoomMeetingID: "n2",
+  zoomPasscode: "o2"
 }
 
 /* 
@@ -27,7 +30,7 @@ function getObserverSeatLimit() {
 }
 
 function getMonth() {
-  return config.getRange(ConfigDataMap.month).getDisplayValue();
+  return config.getRange(ConfigDataMap.month).getDisplayValue().trim();
 }
   
 function getActiveSeatLimit() {
@@ -71,4 +74,16 @@ function getSessionStatus() {
 
 function getUploadLimit() {
   return config.getRange(ConfigDataMap.uploadLimit).getValue();
+}
+
+function getZoomLink() {
+  return config.getRange(ConfigDataMap.zoomLink).getValue();
+}
+
+function getZoomMeetingID() {
+  return config.getRange(ConfigDataMap.zoomMeetingID).getValue();
+}
+
+function getZoomPasscode() {
+  return config.getRange(ConfigDataMap.zoomPasscode).getValue();
 }
