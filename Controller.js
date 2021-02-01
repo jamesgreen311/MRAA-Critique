@@ -45,6 +45,9 @@ function saveToSheet(data) {
       zoomMeetingId: getZoomMeetingID(),
       zoomPasscode: getZoomPasscode(),
       sendTo: data[2],
+      firstName: data[0],
+      lastName: data[1],
+      email: data[2]
       //sendTo: "jamesgreen.311@gmail.com" // testing only
     }
 

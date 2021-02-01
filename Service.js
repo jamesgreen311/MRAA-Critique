@@ -17,7 +17,8 @@ function sendNotification(data) {
     const zoomContent = `To Join Zoom Meeting<br>${data.zoomLink}<br><br>Meeting ID: ${data.zoomMeetingId}<br>Passcode: ${data.zoomPasscode}<br><br>`
 
     const contactInfo = data.contactEmail ? `For questions, please contact ${data.contactEmail} <br><br>` : "";
-    const body = `Thank you for registering for this month's critique session <br><br>
+    const body = `Registered Name: ${data.firstName} ${data.lastName} <br>Registered Email: ${data.email}<br><br>
+        Thank you for registering for this month's critique session <br><br>
         ${contactInfo}
         If you need a reminder about event details, please revisit the <a href='${regForm}'>registration form</a> or the MRAA website 
         <a href='${eventsPage}'>Events page</a><br><br>${zoomContent}`;

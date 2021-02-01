@@ -7,6 +7,7 @@ const liveSheet = `${m} ${y}`;
 
 //let targetSheet = publishMode === "live" ? liveSheet : testSheet;
 dataSheet = ds.getSheetByName(liveSheet);
+//dataSheet = ds.getSheetByName(testSheet);
 
 /*
 Target Data SpreadSheet retrieved as ds in privateSettings.js
