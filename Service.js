@@ -31,3 +31,8 @@ function sendNotification(data) {
         htmlBody: body
     });
 }
+
+function getCurrentYear() {
+    let y = new Date().getFullYear();
+    return y;
+}

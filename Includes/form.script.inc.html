@@ -9,7 +9,7 @@
 
   function pageLoaded() {
     google.script.run.withSuccessHandler(setCopyrightYear).getCurrentYear();
-    google.script.run.withSuccessHandler(closeSession).getSessionStatus();
+    google.script.run.withSuccessHandler(showSessionStatus).getSessionStatus();
   }
 
   function toggleFileRequiredFields(e) {
@@ -68,7 +68,8 @@
   }
 
   function saveFormSuccess(e) {
-    google.script.run.withSuccessHandler(updateUploadCount).getUploadCountByEmail(document.getElementById('email').value);
+    google.script.run.withSuccessHandler(updateUploadCount).getUploadCountByEmail(document.getElementById('email')
+      .value);
     google.script.run.withSuccessHandler(updateAttendingCount).getTotalAttendees();
     google.script.run.withSuccessHandler(updateActiveAvailable).getActiveAvailable();
     google.script.run.withSuccessHandler(updateObserverAvailable).getObserverAvailable();
@@ -154,6 +155,25 @@
     }
   }
 
+  function showSessionStatus(status) {
+    let messageBox = document.getElementById('sessionStatusMessage');
+    switch (status) {
+      case "Closed":
+        messageBox.innerHTML =
+          "Sign up for this month's critique is now <span class='badge badge-danger'>Closed</span>";
+        messageBox.style.display = "block";
+        document.getElementById('btnSave').disabled = true;
+        document.getElementById('frmMain').innerHTML = "";
+        break;
+
+      case "Wait List":
+        messageBox.innerHTML =
+          "Sign up for this month's critique is full but you can register to be placed on the <span class='badge badge-warning'>Wait List</span> if you wish.";
+        messageBox.style.display = "block";
+        break;
+    }
+  }
+
   function updateUploadCount(c) {
     document.getElementById('uploadCount').innerText = c;
   }
@@ -176,7 +196,6 @@
       document.getElementById('btnSave').disabled = true;
     }
   }
-
 </script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

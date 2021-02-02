@@ -1,14 +1,19 @@
 const d = new Date();
 const m = getMonth();
 const y = d.getFullYear();
-const testSheet = "Test";
-const liveSheet = `${m} ${y}`;
-//const publishMode = "test";
+const testSheet = "Test Responses";
+const liveSheet = `${m} ${y}`; //current month and year
 
-//let targetSheet = publishMode === "live" ? liveSheet : testSheet;
+/* 
+PRODUCTION
+*/
 dataSheet = ds.getSheetByName(liveSheet);
-//dataSheet = ds.getSheetByName(testSheet);
 
+/*
+TESTING
+*/
+dataSheet = ds.getSheetByName(testSheet);
+    
 /*
 Target Data SpreadSheet retrieved as ds in privateSettings.js
 */

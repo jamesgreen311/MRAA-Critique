@@ -1,8 +1,12 @@
-const config = ds.getSheetByName("Config");
-
-/*
-Target Config Sheet retrieved as config in privateSettings.js
+/* 
+PRODUCTION
 */
+let config = ds.getSheetByName("Config");
+
+/* 
+TESTING
+*/
+config = ds.getSheetByName("Test Config");
 
 ConfigDataMap = {
   month: "a2",
