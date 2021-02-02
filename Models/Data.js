@@ -31,11 +31,12 @@ Data = {
     width: "h2",
     height: "i2",
     medium: "j2",
-    timestamp: "m2",
+    waitList: "m2",
+    timestamp: "n2",
     // Calculated Columns, pivot tables
-    attendeeCount: "n2:o",  // grand total is last row of range, sub totals by attendee level
-    uploadCounts: "p2:q",   // counts are by email address.
-    entriesMade: "r2:s"     // number of registrations made by email address. if 1, then send confirmation email
+    attendeeCount: "o2:p",  // grand total is last row of range, sub totals by attendee level
+    uploadCounts: "q2:r",   // counts are by email address.
+    entriesMade: "s2:t"     // number of registrations made by email address. if 1, then send confirmation email
 }
 
 function getDataSheet() {
