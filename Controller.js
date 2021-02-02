@@ -51,6 +51,12 @@ function saveToSheet(data) {
       //sendTo: "jamesgreen.311@gmail.com" // testing only
     }
 
+    // check for max attendance
+    // if total attendance meets or exceeds active and observer seating limit then set status to 'wait list'
+    if (getTotalAttendees() >= (getActiveSeatLimit() + getObserverSeatLimit())) {
+      setSessionStatus(StatusType.Wait);
+    };
+
     if (getRecordCountByEmail(data[2]) < 2) {
       sendNotification(eventInfo);
     }

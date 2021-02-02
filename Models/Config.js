@@ -8,6 +8,12 @@ TESTING
 */
 config = ds.getSheetByName("Test Config");
 
+const StatusType = {
+  Wait: "Wait List",
+  Closed: "Closed",
+  Open: "Open"
+}
+
 ConfigDataMap = {
   month: "a2",
   start: "b2",
@@ -90,4 +96,10 @@ function getZoomMeetingID() {
 
 function getZoomPasscode() {
   return config.getRange(ConfigDataMap.zoomPasscode).getValue();
+}
+
+
+function setSessionStatus(status) {
+  const statusCell = config.getRange(ConfigDataMap.sessionStatus)
+  statusCell.setValue(status);
 }
