@@ -55,6 +55,10 @@ function getDeadline() {
   return config.getRange(ConfigDataMap.deadline).getDisplayValue();
 }
 
+function getDeadlineRaw() {
+  return config.getRange(ConfigDataMap.deadline).getValue();
+}
+
 function getHostEmail() {
   return config.getRange(ConfigDataMap.hostEmail).getValue();
 }
@@ -102,4 +106,9 @@ function getZoomPasscode() {
 function setSessionStatus(status) {
   const statusCell = config.getRange(ConfigDataMap.sessionStatus)
   statusCell.setValue(status);
+}
+
+function closeSession() {
+  const statusCell = config.getRange(ConfigDataMap.sessionStatus);
+  statusCell.setValue(StatusType.Closed);
 }

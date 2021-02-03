@@ -37,3 +37,12 @@ function getCurrentYear() {
     let y = new Date().getFullYear();
     return y;
 }
+
+function createCloseTrigger() {
+    const deadline = getDeadlineRaw(); 
+
+    ScriptApp.newTrigger("closeSession")
+        .timeBased()
+        .atDate(deadline.getFullYear(), deadline.getMonth()+1, deadline.getDate())
+        .create();
+}
