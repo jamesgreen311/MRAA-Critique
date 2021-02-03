@@ -6,7 +6,7 @@ let config = ds.getSheetByName("Config");
 /* 
 TESTING
 */
-config = ds.getSheetByName("Test Config");
+//config = ds.getSheetByName("Test Config");
 
 const StatusType = {
   Wait: "Wait List",

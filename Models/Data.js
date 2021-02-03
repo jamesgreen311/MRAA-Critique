@@ -12,7 +12,7 @@ dataSheet = ds.getSheetByName(liveSheet);
 /*
 TESTING
 */
-dataSheet = ds.getSheetByName(testSheet);
+//dataSheet = ds.getSheetByName(testSheet);
     
 /*
 Target Data SpreadSheet retrieved as ds in privateSettings.js
