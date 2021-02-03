@@ -25,8 +25,8 @@ function sendNotification(data) {
 
     MailApp.sendEmail({
         to: data.sendTo,
-        //cc: `${getCoordinatorEmail()}, ${getHostEmail()}`,
-        cc: `${getHostEmail()}`,
+        cc: `${getCoordinatorEmail()}, ${getHostEmail()}`,
+        //cc: `${getHostEmail()}`, TESTING
         replyTo: getHostEmail(),
         subject: "MRAA Critique Registration",
         htmlBody: body
