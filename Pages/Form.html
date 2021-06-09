@@ -42,6 +42,9 @@
 
       <div id="aboutSection" class="mraa-callout mraa-callout-primary">
         <div class="row">
+          <div class="col-12"><p><?= getMeetingMessage() ?></p></div>
+        </div>
+        <div class="row">
           <div class="col-6">
             <p>
               <?= getStart() ?> - <?= getEnd() ?>
@@ -49,7 +52,7 @@
             <p>Sign up DEADLINE is <?= getDeadline() ?></p>
           </div>
           <div class="col-6">
-            <p>Online Host: <a href="mailto: <?= getHostEmail() ?>"> <?= getHostName() ?> </a></p>
+            <p><?= getMeetingType() ?> Host: <a href="mailto: <?= getHostEmail() ?>"> <?= getHostName() ?> </a></p>
             <p>Critique Coordinator: <a href="mailto: <?= getCoordinatorEmail() ?>"> <?= getCoordinator() ?> </a></p>
           </div>
 

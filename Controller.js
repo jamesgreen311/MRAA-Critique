@@ -48,7 +48,10 @@ function saveToSheet(data, fileId) {
     sendTo: data[2],
     firstName: data[0],
     lastName: data[1],
-    email: data[2]
+    email: data[2],
+    hostName: getHostName(),
+    hostLocation: getLocation(),
+    meetingType: getMeetingType()
     //sendTo: "jamesgreen.311@gmail.com" // TESTING
   }
 

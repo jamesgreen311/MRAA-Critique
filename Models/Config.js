@@ -29,7 +29,10 @@ ConfigDataMap = {
   uploadLimit: "l2",
   zoomLink: "m2",
   zoomMeetingID: "n2",
-  zoomPasscode: "o2"
+  zoomPasscode: "o2",
+  location: "p2",
+  meetingType: "q2",
+  meetingMessage: "r2"
 }
 
 /* 
@@ -102,6 +105,21 @@ function getZoomPasscode() {
   return config.getRange(ConfigDataMap.zoomPasscode).getValue();
 }
 
+/* 
+  @return String
+  Returns In Person | Virtual | Hyrid
+*/ 
+function getMeetingType() {
+  return config.getRange(ConfigDataMap.meetingType).getValue();
+}
+
+function getLocation() {
+  return config.getRange(ConfigDataMap.location).getValue();
+}
+
+function getMeetingMessage() {
+  return config.getRange(ConfigDataMap.meetingMessage).getValue();
+}
 
 function setSessionStatus(status) {
   const statusCell = config.getRange(ConfigDataMap.sessionStatus)
